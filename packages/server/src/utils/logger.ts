@@ -118,7 +118,7 @@ const logger = createLogger({
     },
     exitOnError: false,
     transports: [
-        new transports.Console(),
+        new transports.Console({ level: config.logging.server.level ?? 'info' }),
         ...(!process.env.STORAGE_TYPE || process.env.STORAGE_TYPE === 'local'
             ? [
                   new DailyRotateFile({
